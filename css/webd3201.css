@@ -1,0 +1,459 @@
+/* Header and footer file*/
+* {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+}
+
+body {
+      font-family: "Poppins";
+      width: 100%;
+      height: 100vh;
+}
+
+ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      background: #e3e3e3;
+      position: relative;
+}
+
+ul li {
+      display: inline-block;
+}
+
+ul li a {
+      color: #292929;
+      text-decoration: none;
+      padding: 15px;
+      display: block;
+}
+
+ul li:hover {
+      background: lightgrey;
+}
+
+ul ul {
+      position: absolute;
+      min-width: 200px;
+      background: lightgrey;
+      display: none;
+}
+
+ul ul li {
+      display: block;
+      background: #e3e3e3;
+}
+
+ul li:hover ul {
+      display: block;
+}
+
+ul li i {
+      color: #292929;
+      float: right;
+      padding-left: 20px;
+}
+
+nav div {
+      background: lightgrey;
+      color: #292929;
+      font-size: 24px;
+      padding: 0.6em;
+      cursor: pointer;
+      display: none;
+}
+
+@media(max-width: 768px) {
+      nav div {
+            display: block;
+      }
+
+      ul {
+            display: none;
+            position: static;
+            background: #e3e3e3;
+      }
+
+      ul li {
+            display: block;
+      }
+
+      ul ul {
+            position: static;
+            background: #e3e3e3;
+      }
+}
+
+.custom_one
+{
+  font-family: 'Dancing Script';
+  font-size: 70px;
+  word-spacing: 0.25px;
+}
+
+/* End of need tags for header and footer */
+
+.header-image
+{
+  background-image: url("picture/house1.jpg");
+  height: 350px;
+  background-position: 30% 30%;
+}
+
+.header-text
+{
+  padding-top: 40px;
+  text-align: center;
+  font-weight: 200;
+  font-size: 51px;
+}
+
+.footer
+{
+  width: 100%;
+  padding-top: 40px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+/* End of need tags for header and footer */
+
+/* All tags needed for the index */
+
+.projectBody
+{
+  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 3%;
+  width: 25%;
+  border-style: solid;
+  border-color: black;
+  background-color: #66D1DC;
+  display: inline-block;
+  transform: scale(1);
+	transform: scale(1);
+	transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+
+.projectBody:before{
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  top: 0;
+  left: 0;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  opacity: 0;
+  transition: .5s;
+  box-sizing: border-box;
+}
+
+.projectBody:after{
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  opacity: 0;
+  transition: .5s;
+  box-sizing: border-box;
+}
+
+.projectBody:hover:before{
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.projectBody:hover:after{
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.project_info:hover p{
+  transform: scale(1);
+}
+
+.projectBody:hover{
+  box-shadow: 0 25px 30px rgba(0,0,0,.5);
+}
+
+.projectBody span{
+  position: absolute;
+  top: 0;
+  left: 80%;
+  width: 25%;
+  height: 100%;
+  background: rgba(255,255,255,.2);
+  transition: .5s;
+  transition-delay: .1s;
+  transform: skewX(170deg);
+}
+
+.projectBody:hover span{
+  left: -10%;
+}
+
+.projectBody:hover {
+    transform: scale(1.1);
+}
+
+.projectBody h3
+{
+    color: white;
+    font-weight: normal;
+    margin-left: 3%;
+}
+
+.projectBody p
+{
+    font-size: 20px;
+    color: black;
+    margin-left: 3%;
+}
+
+.project_info
+{
+    width: 100%;
+    background-color: white;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.project_title
+{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .projectBody {
+    width: 80%; /* The width is 100%, when the viewport is 800px or smaller */
+    margin-left: 10%;
+    margin-bottom: 5%;
+    margin-right: auto;
+  }
+}
+
+  /* end of all changes needed for the index.php */
+
+  /* start of all changes needed for the welcome.php */
+
+.welcome-page-content h1
+{
+  padding-bottom: 10px;
+  margin-top: 30px;
+  margin-left: 10%;
+  font-size: 41px;
+  font-weight: 400;
+}
+
+.welcome-page-content p
+{
+  margin-left: 13%;
+  padding-bottom: 100px;
+  font-size: 21px;
+  font-weight: 300;
+}
+
+
+@media screen and (max-width: 1100px) {
+  .welcome-page-content h1 {
+  margin-left: 2%;
+  }
+}
+
+.login-style table
+{
+  font-size: 41px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.login-style td
+{
+  text-align: right;
+  padding-right: 20px;
+}
+
+.login-style p
+{
+  padding-bottom: 20px;
+}
+
+.login-style input
+{
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 350px;
+  height: 50px;
+}
+
+.register-style table
+{
+  font-size: 31px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.register-style td
+{
+  text-align: right;
+  padding-right: 20px;
+}
+
+.register-style p
+{
+  padding-bottom: 10px;
+}
+
+.register-style input
+{
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 350px;
+  height: 35px;
+  font-size: 21px;
+}
+
+.radio input
+{
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 50px;
+  height: 15px;
+}
+
+.radio p
+{
+  font-size: 20px;
+  padding-bottom: 0px;
+}
+
+.register-style select
+{
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 350px;
+  height: 35px;
+  font-size: 21px;
+}
+
+.login-button
+{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.login-button input
+{
+  background-color: #D3E8FD;
+  font-size: 17px;
+  border-radius: 12px;
+  width: 150px;
+  height: 40px;
+}
+
+.login-button span
+{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.agent-button
+{
+  padding-bottom: 10px;
+}
+
+.agent-button p
+{
+  font-size: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.agent-button input
+{
+  width: 20px;
+  height: 20px;
+}
+
+.agent-button span
+{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.error
+{
+  font-size: 21px;
+  color: #66D1DC;
+  padding-top: 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.register-text
+{
+  text-align: center;
+}
+
+.logo
+{
+  width: 80px;
+}
+
+.note
+{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.note p
+  {
+    font-size: 31px;
+    text-align: center;
+  }
+
+  .logout
+  {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .logout p
+    {
+      font-size: 400;
+      font-size: 25px;
+      text-align: center;
+    }
+
+.heading
+{
+  padding-top: 25px;
+  text-align: center;
+  font-size: 40px;
+}
