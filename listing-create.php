@@ -143,8 +143,8 @@ if ($error === "") {
 	<tr>
 		<td>Status: </td>
 		<td><?php
-		$value = "property_status";
-		build_simple_dropdown("listing_status");
+		$value = "";
+		build_simple_dropdown("listing_status", $value);
 		?></td>
   </tr>
   <tr>
@@ -166,43 +166,43 @@ if ($error === "") {
 	<tr>
 		<td>City: </td>
 		<td><?php
-		$value = "city";
-		build_dropdown("listing_city");
+		$value = "";
+		build_dropdown("listing_city", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Property Options: </td>
 		<td><?php
-		$value = "property_options";
-		build_dropdown("listing_property_options");
+		$value = "";
+		build_dropdown("listing_property_options", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Bedroom: </td>
 		<td><?php
-		$value = "bedroomTotalNumber";
-		build_simple_dropdown("listing_bedrooms");
+		$value = "";
+		build_simple_dropdown("listing_bedrooms", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Bathroom: </td>
 		<td><?php
-		$value = "bathroom_number";
-		build_simple_dropdown("listing_bathrooms");
+		$value = "";
+		build_simple_dropdown("listing_bathrooms", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Build Type: </td>
 		<td><?php
-		$value = "building_type";
-		build_dropdown("listing_building_type");
+		$value = "";
+		build_dropdown("listing_building_type", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Build stype: </td>
 		<td><?php
-		$value = "building_style";
-		build_dropdown("listing_building_style");
+		$value = "";
+		build_dropdown("listing_building_style", $value);
 		 ?></td>
 	</tr>
 	</table>

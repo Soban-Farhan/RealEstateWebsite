@@ -14,22 +14,25 @@
    return $result;
  }
 
- function build_simple_dropdown($table)
+ function build_simple_dropdown($table, $value)
  {
    $conn = db_Connect();
 
    $sql = "SELECT * FROM $table";
    $result = pg_query($conn, $sql);
 
+   //echo $value;
+
    echo "<select name='".$table."' style='width:50%;'></option>";
    echo "<option value='" . "" ."'>" .""."</option>";
    while ($row = pg_fetch_assoc($result)) {
-   echo "<option value='" . $row['value'] ."'>" . $row['value'] ."</option>";
+     if ($value == $row['value']) { $checked="selected=selected"; } else { $checked=""; }
+   echo "<option value='" . $row['value'] ."' $checked >" . $row['value'] ."</option>";
  }
  echo "</select>";
  }
 
- function build_dropdown($table)
+ function build_dropdown($table, $value)
  {
    $conn = db_Connect();
 
@@ -40,7 +43,8 @@
    echo "<select name='".$table."' style='width:50%;'>";
    echo "<option value='" . "" ."'>" .""."</option>";
    while ($row = pg_fetch_assoc($result)) {
-   echo "<option value='". $row['value'] ."'>" . $row['property'] ."</option>";
+     if ($value == $row['value']) { $checked="selected=selected"; } else { $checked=""; }
+   echo "<option value='". $row['value'] ."' $checked >" . $row['property'] ."</option>";
  }
  echo "</select>";
  }
@@ -53,7 +57,8 @@
    $result = pg_query($conn, $sql);
 
    while ($row = pg_fetch_assoc($result)) {
-   echo "<input type='radio' name='".$value."' value='". $row['value'] ."' checked>" . $row['property'] ."</input>";
+     if ($value == $row['value']) { $checked="checked=checked"; } else { $checked=""; }
+   echo "<input type='radio' name='".$table."' value='". $row['value'] ."' $checked >" . $row['property'] ."</input>";
  }
  }
 

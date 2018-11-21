@@ -34,7 +34,7 @@ WEBD2201
 	$primaryPhoneNum = $_SESSION['primary_phone_number'];
 	$secondaryPhoneNum = $_SESSION['secondary_phone_number'];
 	$faxNumber = $_SESSION['fax_number'];
-	$contactmethod = $_SESSION['contact_method'];
+	$contactMethod = $_SESSION['contact_method'];
 
 	$table = "";
 	$value = "";
@@ -56,13 +56,13 @@ WEBD2201
 	$lastName = trim($_POST["last_name"]);
 	$streetAddress1 = trim($_POST["first_address"]);
 	$streetAddress2 = trim($_POST["second_address"]);
-	$city = trim($_POST["city"]);
+	$city = trim($_POST["listing_city"]);
 	$province = trim($_POST["provinces"]);
 	$postalCode = trim($_POST["postal_code"]);
 	$primaryPhoneNum = trim($_POST["primary_phone_number"]);
 	$secondaryPhoneNum = trim($_POST["secondary_phone_number"]);
 	$faxNumber = trim($_POST["fax_number"]);
-	$contactmethod = trim($_POST["contact_method"]);
+	$contactMethod = trim($_POST["preferred_contact_method"]);
 
 
 	//User Details
@@ -110,7 +110,7 @@ WEBD2201
 
 	if (!isset($primaryPhoneNum) || $primaryPhoneNum == "") {
 		$error .= "The primary phone is required.<br/>";
-	} elseif (!preg_match("/^[2-9]{1}+[0-9]{2} [2-9]{1}+[0-9]{2} [0-9]{4}$/", $primaryPhoneNum)) {
+	} elseif (!preg_match("/^([(][2-9]{1}[0-9]{2}[)])([2-9]{1}[0-9]{2}[-])[0-9]{4}$/", $primaryPhoneNum)) {
 		$error .= "Your primary phone number is invalid. It should be in format.(### ### ####)<br/>";
 	}
 
@@ -124,7 +124,7 @@ WEBD2201
 		$error .= "Your fax number is invalid.<br/>";
 	}
 
-	if (!isset($contactmethod) || $contactmethod == "") {
+	if (!isset($contactMethod) || $contactMethod == "") {
   	$error .= "Please select something from the contact method.<br/>";
   }
 
@@ -148,7 +148,7 @@ if ($error === "") {
               primary_phone_number = '".$primaryPhoneNum."',
               secondary_phone_number = '".$secondaryPhoneNum."',
               fax_number = '".$faxNumber."',
-              preferred_contact_method = '".$contactmethod."'
+              preferred_contact_method = '".$contactMethod."'
 
               WHERE user_id = '".$login."'";
 
@@ -158,7 +158,7 @@ if ($error === "") {
         $_SESSION['email_address'] = $email;
 
         //Personal-information variable
-        $_SESSION['first_name'] = $salutation;
+        $_SESSION['salutation'] = $salutation;
         $_SESSION['first_name'] = $firstName;
         $_SESSION['last_name'] = $lastName;
         $_SESSION['first_address'] = $streetAddress1;
@@ -169,9 +169,9 @@ if ($error === "") {
         $_SESSION['primary_phone_number'] = $primaryPhoneNum;
         $_SESSION['secondary_phone_number'] = $secondaryPhoneNum;
         $_SESSION['fax_number'] = $faxNumber;
-        $_SESSION['contact_method'] = $contactmethod;
+        $_SESSION['contact_method'] = $contactMethod;
 
-        $output = "Your personal information was successful.";
+        $output = "Your personal information was updated successful.";
 		  }
   }
 
@@ -182,14 +182,16 @@ if ($error === "") {
 	<h3><?php echo $error; ?></h3>
 </div>
 
+	<p><?php print_r($_SESSION); ?></p>
+
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<div class="register-style">
 	<table>
 	<tr>
 		<td>Salutation: </td>
 		<td><?php
-		$value = "salutation";
-		build_simple_dropdown("salutation", "$value");
+		$value = $salutation;
+		build_simple_dropdown("salutation", $value);
 		?></td>
 	</tr>
 	<tr>
@@ -215,15 +217,15 @@ if ($error === "") {
 	<tr>
 		<td>City: </td>
 		<td><?php
-		$value = "city";
-		build_dropdown("listing_city","$value");
+		$value = $city;
+		build_dropdown("listing_city", $value);
 		 ?></td>
 	</tr>
 	<tr>
 		<td>Province: </td>
 		<td><?php
-		$value = "provinces";
-		build_simple_dropdown("provinces", "$value");
+		$value = $province;
+		build_simple_dropdown("provinces", $value);
 		 ?></td>
 	</tr>
 	<tr>
@@ -245,8 +247,8 @@ if ($error === "") {
 	<tr>
 		<td>Contact Method: </td>
     <td><div class="radio"><p><?php
-		$name = "contact_method";
-		build_radio("preferred_contact_method", $name);
+		$value = $contactMethod;
+		build_radio("preferred_contact_method", $value);
 		 ?></p></div></td>
 	</tr>
 	</table>

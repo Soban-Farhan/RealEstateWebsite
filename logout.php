@@ -23,7 +23,7 @@ WEBD2201
 
   ?>
 
-	<div class="logout"><p>You have been loggout out. Thanks for using our website and not group24's. <a href="./login.php">Login again?</a></p></div>
+	<div class="logout"><p>You have been logged out. Thanks for using viewing our website and not group24's. <a href="./login.php">Login again?</a></p></div>
 
 <?php
 
