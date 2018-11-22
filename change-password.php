@@ -16,6 +16,16 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	include("./header.php");
 	//require("./includes/db.php");
 
+	if (!isset($_SESSION['user_type'])) {
+
+		$_SESSION['error_message'] = "Can't access that page until you login.";
+
+		header("Location:./login.php");
+		ob_flush();
+	} else {
+		$_SESSION['error_message'] = "";
+	}
+
 	$login = "";
 	$password = "";
 	$output = "";

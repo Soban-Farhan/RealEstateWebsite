@@ -18,6 +18,7 @@ WEBD2201
 
 	$sql = "";
 
+
  if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$login = trim($_POST["id"]);
 	$password =  trim($_POST["user_password"]);
@@ -97,8 +98,8 @@ WEBD2201
  ?>
 
 <div class="error">
-	<?php echo $error;
-	?>
+	<?php echo $error;?>
+	<h3><?php echo $_SESSION['error_message']; $_SESSION['error_message'] = ""; ?></h3>
 </div>
 
 

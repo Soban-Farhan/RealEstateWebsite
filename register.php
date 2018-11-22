@@ -33,7 +33,6 @@ WEBD2201
 	$password = "";
   $confirm = "";
   $email = "";
-  $user_type = "";
 
 	$output = "";
 	$error = "";
@@ -41,8 +40,13 @@ WEBD2201
 	$sql = "";
 
 	if (isset($_SESSION['user_type'])) {
+
+		$_SESSION['error_message'] = "You are not allowed to register once logged in. Please Logout and register.";
+
 		header("Location:./dashboard.php");
 		ob_flush();
+	} else {
+		$_SESSION['error_message'] = "";
 	}
 
  if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -124,19 +128,19 @@ WEBD2201
 	}
 
 	if (!isset($postalCode) || $postalCode == "") {}
-	elseif (!preg_match("/^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/", $postalCode)) {
+	elseif (!preg_match("/^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/", $postalCode)) {
 		$error .= "The postal code entered is invalid.<br/>";
 	}
 
 	if (!isset($primaryPhoneNum) || $primaryPhoneNum == "") {
 		$error .= "The primary phone is required.<br/>";
 	} elseif (!preg_match("/^([(][2-9]{1}[0-9]{2}[)])([2-9]{1}[0-9]{2}[-])[0-9]{4}$/", $primaryPhoneNum)) {
-		$error .= "Your primary phone number is invalid. Please follow (###)###-#### format.<br/>";
+		$error .= "Your primary phone number is invalid. Please follow the format.<br/>";
 	}
 
 	if (!isset($secondaryPhoneNum) || $secondaryPhoneNum == "") {}
 		elseif (!preg_match("/^[2-9]{1}+[0-9]{2} [2-9]{1}+[0-9]{2} [0-9]{4}$/", $secondaryPhoneNum)) {
-		$error .= "Your secondary phone number is invalid. Please follow (### ### ####) format.<br/>";
+		$error .= "Your secondary phone number is invalid. Please follow the format.<br/>";
 	}
 
 	if (!isset($faxNumber) || $faxNumber == "") {}
@@ -173,6 +177,7 @@ if ($error === "") {
 			$result =  pg_execute($conn, $query, array( $login, $salutation, $firstName, $lastName, $streetAddress1, $streetAddress2, $city, $province,
 																									$postalCode, $primaryPhoneNum, $secondaryPhoneNum, $faxNumber, $contactMethod));
 
+			$_SESSION['error_message'] = "User was made successfully.";
       header("Location:./login.php");
 			ob_flush();
 		}
@@ -258,11 +263,11 @@ if ($error === "") {
 	</tr>
 	<tr>
 		<td>Postal code: </td>
-		<td><p><input type="text" name="postal_code" value="<?php echo $postalCode ?>" size="15" placeholder="R0R 0R0"/></p></td>
+		<td><p><input type="text" name="postal_code" value="<?php echo $postalCode ?>" size="15" placeholder="R0R0R0"/></p></td>
 	</tr>
 	<tr>
 		<td>Primary phone number: </td>
-		<td><p><input type="text" name="primary_phone_number" value="<?php echo $primaryPhoneNum ?>" size="15" placeholder="012 345 6789"/></p></td>
+		<td><p><input type="text" name="primary_phone_number" value="<?php echo $primaryPhoneNum ?>" size="15" placeholder="(###)###-####"/></p></td>
 	</tr>
 	<tr>
 		<td>Secondary phone number: </td>

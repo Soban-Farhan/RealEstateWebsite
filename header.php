@@ -29,11 +29,12 @@
 
         <ul>
               <li><a href="./index.php">Index</a></li>
+
               <li>Users <i class="fa fa-sort-desc"></i>
                     <ul>
                           <li><a href="./admin.php">Admin</a></li>
                           <li><a href="./welcome.php">Client</a></li>
-                          <li><a href="./agent.php">Agent</a></li>
+                          <li><a href="./dashboard.php">Agent</a></li>
                     </ul>
               </li>
               <li>Listing<i class="fa fa-sort-desc"></i>

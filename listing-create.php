@@ -16,10 +16,21 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	include("./header.php");
 	require("./includes/db.php");
 
-	if ($_SESSION['user_type'] != AGENT )
+	if (!isset($_SESSION['user_type']))
 	{
+		$_SESSION['error_message'] = "Please login as an Agent to view that page.";
 		header("Location:./login.php");
 		ob_flush();
+	}
+	elseif ($_SESSION['user_type'] = CLIENT )
+	{
+		$_SESSION['error_message'] = "Client user's aren't allowed to view listing-create page. Please login as Agent.";
+		header("Location:./logout.php");
+		ob_flush();
+	}
+	else
+	{
+		$_SESSION['error_message'] = "";
 	}
 
 	$table = "";

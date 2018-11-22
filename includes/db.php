@@ -23,7 +23,7 @@
 
    //echo $value;
 
-   echo "<select name='".$table."' style='width:50%;'></option>";
+   echo "<select name='".$table."' style='width:50%;'>";
    echo "<option value='" . "" ."'>" .""."</option>";
    while ($row = pg_fetch_assoc($result)) {
      if ($value == $row['value']) { $checked="selected=selected"; } else { $checked=""; }
