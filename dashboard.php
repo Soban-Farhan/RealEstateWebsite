@@ -15,9 +15,7 @@ Description: File created as part of Deliverable 1. Dashboard page created as pa
 	include("./header.php");
 	require("./includes/db.php");
 
-
 ?>
-
 
 
 <div class="error" style="padding-top:30px;">

@@ -17,7 +17,7 @@ Description: File created as part of Deliverable 1. This file will display an ex
 
 	if ($_SESSION['user_type'] != ADMIN )
 	{
-		$_SESSION['error_message'] = "You must be an Admin to that page.";
+		$_SESSION['error_message'] = "You must be an Admin to access that page.";
 		header("Location:./login.php");
 		ob_flush();
 	}

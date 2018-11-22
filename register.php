@@ -139,7 +139,7 @@ WEBD2201
 	}
 
 	if (!isset($secondaryPhoneNum) || $secondaryPhoneNum == "") {}
-		elseif (!preg_match("/^[2-9]{1}+[0-9]{2} [2-9]{1}+[0-9]{2} [0-9]{4}$/", $secondaryPhoneNum)) {
+		elseif (!preg_match("/^([2-9]{1}[0-9]{2}?){2}[0-9]{4}$/", $secondaryPhoneNum)) {
 		$error .= "Your secondary phone number is invalid. Please follow the format.<br/>";
 	}
 
@@ -271,11 +271,11 @@ if ($error === "") {
 	</tr>
 	<tr>
 		<td>Secondary phone number: </td>
-		<td><p><input type="text" name="secondary_phone_number" value="<?php echo $secondaryPhoneNum ?>" size="15" placeholder="0123456789"/></p></td>
+		<td><p><input type="text" name="secondary_phone_number" value="<?php echo $secondaryPhoneNum ?>" size="15" placeholder="##########"/></p></td>
 	</tr>
 	<tr>
 		<td>FAX number: </td>
-		<td><p><input type="text" name="fax_number" value="<?php echo $faxNumber ?>" size="15" placeholder="0123456789"/></p></td>
+		<td><p><input type="text" name="fax_number" value="<?php echo $faxNumber ?>" size="15" placeholder="##########"/></p></td>
 	</tr>
 	<tr>
 		<td>Prefferd Contact Method: </td>

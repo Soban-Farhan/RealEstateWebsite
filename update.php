@@ -12,11 +12,15 @@ WEBD2201
 	include("./header.php");
   require("./includes/db.php");
 
-  if ($_SESSION['user_type'] == "" )
-  {
-    header("Location:./login.php");
-    ob_flush();
-  }
+	if (!isset($_SESSION['user_type'])) {
+
+		$_SESSION['error_message'] = "Can't access that page until you login.";
+
+		header("Location:./login.php");
+		ob_flush();
+	} else {
+		$_SESSION['error_message'] = "";
+	}
 
 
   $login = $_SESSION['user_id'];
@@ -115,7 +119,7 @@ WEBD2201
 	}
 
 	if (!isset($secondaryPhoneNum) || $secondaryPhoneNum == "") {}
-		elseif (!preg_match("/^[2-9]{1}+[0-9]{2} [2-9]{1}+[0-9]{2} [0-9]{4}$/", $secondaryPhoneNum)) {
+		elseif (!preg_match("/^([2-9]{1}[0-9]{2}?){2}[0-9]{4}$/", $secondaryPhoneNum)) {
 		$error .= "Your secondary phone number is invalid. It should be in format.(### ### ####)<br/>";
 	}
 

@@ -57,7 +57,7 @@
    $result = pg_query($conn, $sql);
 
    while ($row = pg_fetch_assoc($result)) {
-     if ($value == $row['value']) { $checked="checked=checked"; } else { $checked=""; }
+     if ($value == $row['value']) { $checked="checked"; } else { $checked=""; }
    echo "<input type='radio' name='".$table."' value='". $row['value'] ."' $checked >" . $row['property'] ."</input>";
  }
  }
