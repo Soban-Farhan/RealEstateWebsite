@@ -14,7 +14,8 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	$date = "Oct 5, 2018";
 	$banner = "Password/Security";
 	include("./header.php");
-	//require("./includes/db.php");
+	//include("./includes/constants.php")
+	require("./includes/db.php");
 
 	if (!isset($_SESSION['user_type'])) {
 
@@ -32,8 +33,63 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	$error = "";
 	$sql = "";
 
+	$newPassword = "";
+	$confirm = "";
+
+
+
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+		//Passwords
+		$password = trim($_POST["user_password"]);
+		$newPassword = trim($_POST["newPassword"]);
+		$confirm = trim($_POST["confirmNewPassword"]);
+
+		//Validation
+
+		//Current Password is empty and current password does not match password to records
+
+		if(!isset($password) || $password == "")
+			{
+				$error .= "Please enter your current old password.<br/>";
+			}
+		elseif($password != md5($_POST["user_password"]))
+		{
+			$error .= "The old password you entered does not match our records. Please enter your current password";
+		}
+
+		//NEW Password is empty and new password does not meet requirements
+		if(!isset($newPassword) || $newPassword == "")
+			{
+				$error .= "Please enter a new password.<br/>";
+			}
+
+		elseif (strlen($newPassword) < 6 || strlen($newPassword) > 32 )
+		 	{
+   				 $error .= "Please enter the password which is between ". 6 ." and ". 32."<br/>";
+  			}
+
+		
+  			 if(!isset($confirm) || $confirm == "")
+  			{
+   					$error .= "You forgot to confirm the password.<br/>";
+  			}
+  			 elseif (strcmp($newPassword, $confirm) !== 0) 
+  			 {
+  					$error .= "The password doesn't match up with the password entered before.<br/>";
+  			}
+
+	}
+
 
 ?>
+
+<div class="error">
+	<h3><?php echo $error; ?></h3>
+	<!-- <h3><?php// echo $_SESSION['error_message']; ?></h3> -->
+</div>
+
+
 
 <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
 
@@ -41,7 +97,7 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	<table>
 		<tr>
 			<td>Current Password: </td>
-			<td><p><input type="text" name="user_password" value="<?php echo $login; ?>"/></p></td>
+			<td><p><input type="password" name="user_password" value="<?php echo $login; ?>"/></p></td>
 		</tr>
 		<tr>
 			<td>New Password: </td>
