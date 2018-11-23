@@ -14,18 +14,8 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	$date = "Oct 5, 2018";
 	$banner = "Password/Security";
 	include("./header.php");
-	//include("./includes/constants.php")
 	require("./includes/db.php");
 
-	if (!isset($_SESSION['user_type'])) {
-
-		$_SESSION['error_message'] = "Can't access that page until you login.";
-
-		header("Location:./login.php");
-		ob_flush();
-	} else {
-		$_SESSION['error_message'] = "";
-	}
 
 	$login = "";
 	$password = "";
@@ -36,14 +26,32 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	$newPassword = "";
 	$confirm = "";
 
+	$conn = db_Connect();
+	$query = "login_query";
+	$result = db_prepare($conn, $query, 'SELECT user_id  FROM users WHERE user_id = $1 AND password = $2');
+
+	$result =  pg_execute($conn, $query, array($login, md5($password)));
+
+
+	if (!isset($_SESSION['user_type'])) {
+
+		$_SESSION['error_message'] = "Can't access that page until you login.";
+
+		header("Location:./login.php");
+		ob_flush();
+	} else {
+		$_SESSION['error_message'] = "";
+		//$password = $row['user_password'];
+	}
+
 
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		//Passwords
-		$password = trim($_POST["user_password"]);
-		$newPassword = trim($_POST["newPassword"]);
-		$confirm = trim($_POST["confirmNewPassword"]);
+		$password = md5($_POST["user_password"]);
+		$newPassword = md5($_POST["newPassword"]);
+		$confirm = md5($_POST["confirmNewPassword"]);
 
 		//Validation
 
@@ -53,9 +61,9 @@ Description: File created as part of Deliverable 1. This page gives the user the
 			{
 				$error .= "Please enter your current old password.<br/>";
 			}
-		elseif($password != md5($_POST["user_password"]))
+		elseif($password != $password)
 		{
-			$error .= "The old password you entered does not match our records. Please enter your current password";
+			$error .= "The old password you entered does not match our records. Please enter your current password <br/>";
 		}
 
 		//NEW Password is empty and new password does not meet requirements
@@ -64,9 +72,9 @@ Description: File created as part of Deliverable 1. This page gives the user the
 				$error .= "Please enter a new password.<br/>";
 			}
 
-		elseif (strlen($newPassword) < 6 || strlen($newPassword) > 32 )
+		elseif (strlen($newPassword) < MINIMUM_PASSWORD_LENGTH || strlen($newPassword) > MAXIMUM_PASSWORD_LENGTH )
 		 	{
-   				 $error .= "Please enter the password which is between ". 6 ." and ". 32."<br/>";
+   				 $error .= "Please enter the password which is between ". MINIMUM_PASSWORD_LENGTH ." and ". MAXIMUM_PASSWORD_LENGTH."<br/>";
   			}
 
 		
@@ -78,6 +86,17 @@ Description: File created as part of Deliverable 1. This page gives the user the
   			 {
   					$error .= "The password doesn't match up with the password entered before.<br/>";
   			}
+
+  			else
+  			{
+  					$query = ("UPDATE users SET password = $newPassword WHERE user_id = $1");
+					//session_destroy();
+					$error .= "Your password has been changed.";
+				
+
+  			}
+
+  		
 
 	}
 
