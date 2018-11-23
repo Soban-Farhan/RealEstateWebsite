@@ -36,6 +36,8 @@ define("MAXIMUM_HEADLINE_LENGTH","75");
 
 define("MAXIMUM_DESCRIPTION_LENGTH","1000");
 
+define("RECORD_LIMIT","200");
+
 //State Maintenance Constants
 define("COOKIE_LIFESPAN", 2592000); //2592000 seconds equals 30 days of cookie lifespan
 ?>
