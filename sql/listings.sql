@@ -10,7 +10,7 @@ CREATE TABLE listings (
  user_id VARCHAR(20) NOT NULL REFERENCES users(user_id),
  status VARCHAR(1) NOT NULL,
  price NUMERIC NOT NULL,
- headline VARCHAR(100),
+ headline VARCHAR(100) NOT NULL,
  description VARCHAR(1000) NOT NULL,
  postal_code CHAR(6) NOT NULL,
  images SMALLINT NOT NULL,

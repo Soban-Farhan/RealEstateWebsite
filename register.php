@@ -178,8 +178,7 @@ if ($error === "") {
 																									$postalCode, $primaryPhoneNum, $secondaryPhoneNum, $faxNumber, $contactMethod));
 
 			$_SESSION['error_message'] = "User was made successfully.";
-      header("Location:./login.php");
-			ob_flush();
+
 		}
     }
   }
@@ -189,6 +188,7 @@ if ($error === "") {
 <div class="error">
 	<h2><?php echo $output; ?></h2>
 	<h3><?php echo $error; ?></h3>
+	<h3><?php echo $_SESSION['error_message']; ?></h3>
 </div>
 
 	<h1 class="heading">User Details</h1>

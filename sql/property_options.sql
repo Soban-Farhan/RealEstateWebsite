@@ -1,20 +1,18 @@
-﻿DROP TABLE IF EXISTS listing_property_options CASCADE;
+DROP TABLE IF EXISTS property_options;
 
-CREATE TABLE listing_property_options(
-value INTEGER PRIMARY KEY,
-property VARCHAR(15) NOT NULL
+CREATE TABLE property_options(
+value INT PRIMARY KEY,
+property VARCHAR(30) NOT NULL
 );
 
-ALTER TABLE listing_property_options OWNER TO group25_admin;
+ALTER TABLE property_options OWNER TO group25_admin;
 
-INSERT INTO listing_property_options (value, property) VALUES (1, 'Garage');
+INSERT INTO property_options (value, property) VALUES (1, 'Garage');
 
-INSERT INTO listing_property_options (value, property) VALUES (2, 'AC');
+INSERT INTO property_options (value, property) VALUES (2, 'AC');
 
-INSERT INTO listing_property_options (value, property) VALUES (4, 'Pool');
+INSERT INTO property_options (value, property) VALUES (4, 'Pool');
 
-INSERT INTO listing_property_options (value, property) VALUES (8, 'Acreage');
+INSERT INTO property_options (value, property) VALUES (8, 'Acreage');
 
-INSERT INTO listing_property_options (value, property) VALUES (16, 'Waterfront');
-
-SELECT * FROM listing_property_options;
+INSERT INTO property_options (value, property) VALUES (16, 'Waterfront');
