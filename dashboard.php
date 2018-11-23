@@ -15,6 +15,11 @@ Description: File created as part of Deliverable 1. Dashboard page created as pa
 	include("./header.php");
 	require("./includes/db.php");
 
+	if ($_SESSION['user_type'] != AGENT) {
+		header("Location: login.php");
+		ob_flush();
+	}
+
 ?>
 
 

@@ -14,7 +14,7 @@ Description: File created as part of Deliverable 3. This page asks the user to c
 	$date = "November 14, 2018";
 	$banner = "Listing Select";
 	include("./header.php");
-	//require("./includes/db.php");
+	require("./includes/db.php");
 
 
 ?>

@@ -53,10 +53,6 @@
         </ul>
   </nav>
 
-
-      <div class="header-image">
-      </div>
-
       <div class="header-text">
         <p><span class="custom_one">Hello!</span> Welcome to our <b><?php echo $banner ?></b> page.</p>
       </div>

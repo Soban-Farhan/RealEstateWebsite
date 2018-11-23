@@ -14,9 +14,19 @@ Description: File created as part of Deliverable 1. This page gives the results 
 	$date = "Oct 5, 2018";
 	$banner = "Listing Search Results";
 	include("./header.php");
-	//require("./includes/db.php");
-
+	require("./includes/db.php");
 
 ?>
+
+<?php
+	$my_array = $_SESSION['listing_array'];
+
+	for ($index = 0; $index < sizeof($my_array); $index++) {
+
+			build_listing($my_array[$index]['listing_id']);
+
+	}
+
+ ?>
 
 <?php include("./footer.php");

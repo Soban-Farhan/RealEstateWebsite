@@ -14,6 +14,32 @@
    return $result;
  }
 
+ function build_listing($value)
+ {
+   $conn = db_Connect();
+
+   $sql = "SELECT * FROM listings WHERE listing_id = $value ";
+   $result = pg_query($conn, $sql);
+
+   $row = pg_fetch_assoc($result);
+
+     echo "<a href=\"./listing-display.php?listing_id=". $row['listing_id'] ."\"><div class=\"projectMemberBody\">
+             <div class=\"projectMemberImage\" style=\"background-image: url(./picture/house1.jpg)\">
+             </div>
+             <div class=\"projectMemberDescription\">
+             	<p style=\"color: black;\">". $row['headline'] ."
+             		<br/>
+             		<br/>
+             			<span style=\"color:#fec222;\">Cost: $". $row['price'] ."</span>
+             		<br/>
+             			<span style=\"color: black;\">Bedroom: ". $row['bedrooms'] ."</span>
+             		<br/>
+             			<span style=\"color: black;\">Bathroom: ". $row['bathrooms'] ."</span>
+             	 </p>
+             </div>
+             </div></a>";
+ }
+
  function build_simple_dropdown($table, $value)
  {
    $conn = db_Connect();
@@ -28,7 +54,7 @@
    while ($row = pg_fetch_assoc($result)) {
      if ($value == $row['value']) { $checked="selected=selected"; } else { $checked=""; }
    echo "<option value='" . $row['value'] ."' $checked >" . $row['value'] ."</option>";
- }
+  }
  echo "</select>";
  }
 

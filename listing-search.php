@@ -16,26 +16,28 @@ Description: File created as part of Deliverable 1. This file will display a web
 	include("./header.php");
 	require("./includes/db.php");
 
-	$city = "";
-
-	if (isset($_COOKIE['city'])) {
-
-		$city = $_COOKIE['city'];
-
-	} elseif(isset($_GET['city'])){
+	if(isset($_GET['city'])){
 
 		$city = $_GET['city'];
 		setcookie('city', $city, time() + COOKIE_LIFESPAN);
+	}
+	elseif (isset($_COOKIE['city'])) {
+
+		$city = $_COOKIE['city'];
 
 	} else {
 		header("Location:./listing-city-select.php");
+		ob_flush();
 	}
-
 
 	$minPrice = "";
 	$maxPrice = "";
 	$bedroom = "";
 	$bathroom = "";
+	$status = "o";
+
+	$sql = "";
+	$result = "";
 
 	$error = "";
 
@@ -65,8 +67,34 @@ Description: File created as part of Deliverable 1. This file will display a web
 	if (!isset($bathroom) || $bathroom == "") {
 		$error .= "Please select something from the bathroom.<br/>";
 	}
+	if ($error === "") {
 
+		$conn = db_Connect();
+		$query = "listing_query";
+		$sql = 'SELECT listing_id FROM listings
+						WHERE price BETWEEN $1 AND $2 AND status = $3 AND city = $4 AND bedrooms = $5 AND bathrooms = $6';
+		$result = db_prepare($conn, $query, $sql);
+
+		$result =  pg_execute($conn, $query, array($minPrice, $maxPrice, $status, $city,$bedroom, $bathroom));
+
+		if (pg_num_rows($result) === 0) {
+			$error = "No listing found. Please try again.<br/>";
+		} else {
+
+			$_POST['sql_statement'] = $sql;
+
+			while ($row = pg_fetch_assoc($result)) {
+				$array[] = $row;
+			}
+
+			$_SESSION['listing_array'] = $array;
+
+			header("Location:./listing-search-results.php");
+
+		}
 	}
+}
+
 ?>
 
 <div class="heading">
@@ -90,6 +118,7 @@ Description: File created as part of Deliverable 1. This file will display a web
 		<td>Max-price: </td>
 		<td><p><input type="text" name="max_price" value="<?php echo $maxPrice; ?>" size="15" placeholder="Max price"/></p></td>
 	</tr>
+	<tr>
 	<tr>
 		<td>Bedroom: </td>
 		<td><?php

@@ -249,7 +249,7 @@ if ($error === "") {
 	<tr>
 		<td>Parking: </td>
 		<td><?php
-		$value = $flooring;
+		$value = $parking;
 		build_dropdown("property_parking", $value);
 		 ?></td>
 	</tr>
