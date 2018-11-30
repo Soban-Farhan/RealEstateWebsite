@@ -16,7 +16,13 @@ Description: File created as part of Deliverable 1. This file will list availabl
 	include("./header-display-listing.php");
 	require("./includes/db.php");
 
-	$listing_id = $_GET['listing_id'];
+	if (!isset($_GET['listing_id'])) {
+		header("Location:./listing-search.php");
+	} else {
+		$listing_id = $_GET['listing_id'];
+	}
+
+
 
 	$conn = db_Connect();
 
@@ -92,7 +98,7 @@ Description: File created as part of Deliverable 1. This file will list availabl
 		<td>Property Options: </td>
 		<td><?php
 		$value = $propertyOptions;
-		build_dropdown("listing_property_options", $value);
+		build_dropdown("property_option", $value);
 		 ?></td>
 	</tr>
 	<tr>
@@ -113,7 +119,7 @@ Description: File created as part of Deliverable 1. This file will list availabl
 		<td>Property Type: </td>
 		<td><?php
 		$value = $propertyType;
-		build_dropdown("property_type", $value);
+		build_dropdown("property_types", $value);
 		 ?></td>
 	</tr>
 	<tr>

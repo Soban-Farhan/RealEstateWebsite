@@ -34,7 +34,7 @@ Description: File created as part of Deliverable 1. This file will display a web
 	$maxPrice = "";
 	$bedroom = "";
 	$bathroom = "";
-	$status = "o";
+	$status = OPEN;
 
 	$sql = "";
 	$result = "";

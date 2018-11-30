@@ -75,6 +75,19 @@
  echo "</select>";
  }
 
+ function build_checkbox($table, $value)
+ {
+   $conn = db_Connect();
+
+   $sql = "SELECT * FROM $table";
+   $result = pg_query($conn, $sql);
+
+   while ($row = pg_fetch_assoc($result)) {
+     if ($value == $row['value']) { $checked="checked"; } else { $checked=""; }
+   echo "<input type='checkbox' name='".$table."' value='". $row['value'] ."' $checked >" . $row['property'] ."</input>";
+ }
+}
+
  function build_radio($table, $value)
  {
    $conn = db_Connect();

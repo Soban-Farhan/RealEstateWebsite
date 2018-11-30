@@ -71,10 +71,10 @@ Description: File created as part of Deliverable 1. This page gives the user the
 	$description = trim($_POST["description"]);
 	$postalCode = trim($_POST["postal_code"]);
 	$city = trim($_POST["listing_city"]);
-	$propertyOptions = trim($_POST["listing_property_options"]);
+	$propertyOptions = trim($_POST["property_option"]);
 	$bedroom = trim($_POST["listing_bedrooms"]);
 	$bathroom = trim($_POST["listing_bathrooms"]);
-	$propertyType = trim($_POST["property_type"]);
+	$propertyType = trim($_POST["property_types"]);
 	$flooring = trim($_POST["property_flooring"]);
 	$parking = trim($_POST["property_parking"]);
 	$buildingType = trim($_POST["property_building_type"]);
@@ -215,7 +215,7 @@ if ($error === "") {
 		<td>Property Options: </td>
 		<td><?php
 		$value = $propertyOptions;
-		build_dropdown("listing_property_options", $value);
+		build_dropdown("property_option", $value);
 		 ?></td>
 	</tr>
 	<tr>
@@ -236,7 +236,7 @@ if ($error === "") {
 		<td>Property Type: </td>
 		<td><?php
 		$value = $propertyType;
-		build_dropdown("property_type", $value);
+		build_dropdown("property_types", $value);
 		 ?></td>
 	</tr>
 	<tr>
