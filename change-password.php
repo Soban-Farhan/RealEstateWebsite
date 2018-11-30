@@ -87,9 +87,9 @@ Description: File created as part of Deliverable 1. This page gives the user the
   					$error .= "The password doesn't match up with the password entered before.<br/>";
   			}
 
-  			else
+  			if($error === "")
   			{
-  					$query = ("UPDATE users SET password = $newPassword WHERE user_id = $1");
+  					$query = ("UPDATE users SET password = '$newPassword' WHERE user_id = $1");
 					//session_destroy();
 					$error .= "Your password has been changed.";
 				
