@@ -14,6 +14,8 @@
                       src="http://jigsaw.w3.org/css-validator/images/vcss"
                 alt="Valid CSS!" />
           </a>
+          <br/>
+          <a href = "./privacy-policy.php"> Accceptable Use / Privacy Policy </a>
       </div>
 
       <script>
