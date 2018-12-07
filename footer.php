@@ -15,7 +15,7 @@
                 alt="Valid CSS!" />
           </a>
           <br/>
-          <a href = "./privacy-policy.php"> Accceptable Use / Privacy Policy </a>
+          <a href = "./privacy-policy.php"> Privacy Policy </a> <a href = "./aup.php"> Acceptable Use Policy </a>
       </div>
 
       <script>
