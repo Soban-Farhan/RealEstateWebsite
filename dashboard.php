@@ -1,34 +1,79 @@
 <?php
+  $title = "Dashboard";
+  include("./header.php");
 
-/*
-File name: admin.php
-Student: Richard Ocampo (100587995)
-Prof. Darren Puffer and Prof. Austin Garrod
-Date Modified: October, 2018
-Description: File created as part of Deliverable 1. Dashboard page created as part for deliverable 1. Since there is no specific instruction on what the dashboard page should include, it does not have any content at the moment and is only a blank page for now
-*/
+  $sql = "";
+  $result = "";
+  $array = "";
 
-	$title = "Dashboard Page";
-	$file = "dashboard.php";
-	$date = "Oct 5, 2018";
-	$banner = "Dashboard";
-	include("./header.php");
-	require("./includes/db.php");
+  $error = "";
+  $output = "";
 
-	if ($_SESSION['user_type'] != AGENT) {
-		header("Location: login.php");
+  if (!isset($_SESSION['user_type']))
+	{
+		header("Location:./login.php");
+		ob_flush();
+	}
+	elseif ($_SESSION['user_type'] == CLIENT )
+	{
+		header("Location:./logout.php");
 		ob_flush();
 	}
 
+
+  if (isset($_POST['delete-listing'])) {
+
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == "") {
+
+      header("location:./login.php");
+      ob_flush();
+
+    } else {
+
+        $conn = db_Connect();
+
+        $query = "delete_listing_query";
+        $result = db_prepare($conn, $query, 'DELETE FROM listings WHERE listing_id = $1');
+
+        $result =  pg_execute($conn, $query, array( $_POST['delete-listing'] ));
+
+        $output = "Your listing was deleted.";
+      }
+    }
+
+  $conn = db_Connect();
+  $query = "listing_query";
+  $sql = 'SELECT listing_id FROM listings
+          WHERE user_id = $1';
+  $result = db_prepare($conn, $query, $sql);
+
+  $result =  pg_execute($conn, $query, array( $_SESSION['user_id'] ));
+
+  if (pg_num_rows($result) === 0) {
+    $error = "No listing found. Please try again.<br/>";
+  } else {
+
+    while ($row = pg_fetch_assoc($result)) {
+      $array[] = $row;
+    }
+  }
 ?>
 
-
-<div class="error" style="padding-top:30px;">
-	<h3><?php echo $_SESSION['error_message'];
-	$_SESSION['error_message'] = ""; ?></h3>
-
+<div class="row justify-content-center">
+    <h4><?php echo $error;?></h4>
+    <h5><?php echo $output;?></h5>
 </div>
 
-<div class="note"><p> NOTE: Welcome back to your dashboard page.</p></div>
+<div class="row">
 
-<?php include("./footer.php") ?>
+  <?php
+if (!empty($array)) {
+  	for ($index = 0; $index < sizeof($array); $index++) {
+
+  			build_listing($array[$index]['listing_id'], $title);
+  	}
+}
+  ?>
+</div>
+
+<?php include("./footer.php"); ?>

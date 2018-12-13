@@ -8,18 +8,10 @@ Date Modified: November 14, 2018
 Description: File created as part of Deliverable 3. This page asks the user to click the image to select a certain portion of the
 */
 
-	$title = "Listing Select Page";
-	$file = "listing-create.php";
-	$description = "A page design that is used to create a post/listing for the website";
-	$date = "November 14, 2018";
-	$banner = "Listing Select";
+	$title = "Listing City Select";
 	include("./header.php");
-	require("./includes/db.php");
-
-
 ?>
-<h1 class="heading">Please select a city</h1>
-<br/>
+
 <img src="./picture/imageMap.jpg" usemap="#image-map" style="display:block; margin-left:auto; margin-right:auto;" alt="Image-map">
 
 <map name="image-map" >
@@ -33,4 +25,4 @@ Description: File created as part of Deliverable 3. This page asks the user to c
 </map>
 <br/>
 
-<?php include("./footer.php");
+<?php include("./footer.php"); ?>

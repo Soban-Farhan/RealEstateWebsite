@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/webd3201.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/webd3201.css">
+  <link rel="shortcut icon" href="./picture/logo.jpg"/>
   <!--
   	Name: Soban Farhan, Richard Ocampo, Adam Peltenburg, Syed Hasan Raqib
   	File: <?php echo $file . "\n"; ?>
@@ -13,52 +19,160 @@
     <?php
     session_start();
     ob_start();
+
+    require("./includes/functions.php");
+    require("./includes/db.php");
     ?>
-
-    <?php require("./includes/functions.php"); ?>
     <title><?php echo $title; ?></title>
-    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 </head>
-<body>
-  <nav>
-        <div>
-              <i class="fa fa-bars"></i>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#index.php"><img src="./picture/logo.jpg" alt="RR"></a>
+        <button class="navbar-toggler bg-light" data-toggle="collapse" type="button" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <?php
+              if (!isset($_SESSION['user_type']))
+              {
+                echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./index.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Home </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-search.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Search Listing </button></a>
+                      </li>
+                      <li class=\"nav-item \">
+                        <a class=\"nav-link\" href=\"./login.php\"><button type=\"button\" class=\"btn btn-outline-light btn-sl\"> Login </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./register.php\"><button type=\"button\" class=\"btn btn-primary btn-sl\"> Register </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"#\"><button class=\"btn btn-outline-light btn-sl\"> Our Team </button></a>
+                      </li>";
+              }
+              elseif ($_SESSION['user_type'] == CLIENT)
+              {
+                echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./index.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Home </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./welcome.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Welcome </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-search.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Search Listing </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
+                      </li>";
+              }
+              elseif ($_SESSION['user_type'] == PENDING)
+              {
+                echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./index.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Home </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./welcome.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Welcome </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-search.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Search Listing </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
+                      </li>";
+              }
+              elseif ($_SESSION['user_type'] == AGENT)
+              {
+                echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./index.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Home </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./welcome.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Welcome </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./dashboard.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Dashboard </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-search.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Search Listing </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-create.php\"><button class=\"btn btn-outline-light btn-sl\"> Create Listing </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
+                      </li>";
+              }
+              elseif ($_SESSION['user_type'] == ADMIN)
+              {
+                echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./index.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Home </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./admin.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Administrator </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./welcome.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Welcome </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./listing-search.php\"><button style=\"border: none;\" class=\"btn btn-outline-light btn-sl\"> Search Listing </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
+                      </li>";
+              }
+            ?>
+          </ul>
         </div>
-
-        <ul>
-              <li><a href="./index.php">Index</a></li>
-
-              <li>Users <i class="fa fa-sort-desc"></i>
-                    <ul>
-                          <li><a href="./admin.php">Admin</a></li>
-                          <li><a href="./welcome.php">Client</a></li>
-                          <li><a href="./dashboard.php">Agent</a></li>
-                    </ul>
-              </li>
-              <li>Listing<i class="fa fa-sort-desc"></i>
-                    <ul>
-                          <li><a href="./dashboard.php">Dashboard</a></li>
-                          <li><a href="./listing-create.php">Create Listing</a></li>
-                          <li><a href="./listing-display.php">Display Listing</a></li>
-                          <li><a href="./listing-city-select.php">Search Listing</a></li>
-                    </ul>
-              </li>
-              <li><a href="./login.php">Login</a></li>
-              <li><a href="./register.php">Register</a></li>
-              <li><a href="./update.php">Update</a></li>
-              <li><a href="./change-password.php">Security</a></li>
-              <li><a href="./logout.php">logout</a></li>
-        </ul>
-  </nav>
-
-
-      <div class="header-image">
       </div>
+    </nav>
 
-      <div class="header-text">
-        <p><span class="custom_one">Hello!</span> Welcome to our <b><?php echo $banner ?></b> page.</p>
-      </div>
-      <hr/>
-      <div class="content">
+    <!-- Image slideshow -->
+  <?php
+    if ($title === "Index")
+    {
+    echo  "<div id=\"slides\" class=\"carousel slide\" data-ride=\"carousel\">
+            <ul class=\"carousel-indicators\">
+              <li data-target=\"#slides\" data-slide-to=\"0\" class=\"active\"></li>
+              <li data-target=\"#slides\" data-slide-to=\"1\"></li>
+              <li data-target=\"#slides\" data-slide-to=\"2\"></li>
+            </ul>
+            <div class=\"carousel-inner\">
+              <div class=\"carousel-item active\">
+                <img src=\"./picture/house1.jpg\" alt=\"House 1\"/>
+                <div class=\"carousel-caption\">
+                </div>
+              </div>
+              <div class=\"carousel-item\">
+                <img src=\"./picture/house2.jpg\" alt=\"House 2\"/>
+                <div class=\"carousel-caption\">
+                </div>
+              </div>
+              <div class=\"carousel-item\">
+                <img src=\"./picture/house3.jpg\" alt=\"House 3\"/>
+                <div class=\"carousel-caption\">
+                </div>
+              </div>
+            </div>
+          </div>";
+    }
+   ?>
+  <div class="container-fluid jumbotron text-center">
+        <h1>Hello! Welcome to our <b><?php echo $title; ?></b> page.</h1>
+  </div>
+
+  <div class="container-fluid">

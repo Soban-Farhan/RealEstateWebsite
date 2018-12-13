@@ -1,30 +1,15 @@
 <?php
 
-/*
-File name: listing-create.php
-Student: Richard Ocampo (100587995)
-Prof. Darren Puffer and Prof. Austin Garrod
-Date Modified: October, 2018
-Description: File created as part of Deliverable 1. This page gives the user the option to change their password
-*/
-
-	$title = "Listing Create Page";
-	$file = "listing-create.php";
-	$description = "A page design that is used to create a post/listing for the website";
-	$date = "Oct 5, 2018";
-	$banner = "Listing Create";
+	$title = "Listing Create";
 	include("./header.php");
-	require("./includes/db.php");
 
 	if (!isset($_SESSION['user_type']))
 	{
-		$_SESSION['error_message'] = "Please login as an Agent to view that page.";
 		header("Location:./login.php");
 		ob_flush();
 	}
 	elseif ($_SESSION['user_type'] == CLIENT )
 	{
-		$_SESSION['error_message'] = "Client user's aren't allowed to view listing-create page. Please login as Agent.";
 		header("Location:./logout.php");
 		ob_flush();
 	}
@@ -163,122 +148,136 @@ if ($error === "") {
 																									$propertyOptions, $bedroom, $bathroom, $propertyType, $flooring, $parking, $buildingType,
 																									$basementType, $interiorType ));
 
-			$_SESSION['error_message'] = "listing created successfully.";
+  		$output = "listing created successfully.";
 		}
   }
 
 ?>
 
-	<h1 class="heading">Create Listing</h1>
-	<hr/>
+  <div class="row justify-content-center">
+      <h5><?php echo $error;?></h5>
+      <h3><?php echo $output;?></h3>
+  </div>
 
-	<div class="error">
-		<h2><?php echo $output; ?></h2>
-		<h3><?php echo $error; ?></h3>
-		<h3><?php echo $_SESSION['error_message']; $_SESSION['error_message'] = "";?></h3>
-	</div>
-
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<div class="register-style">
-	<table>
-	<tr>
-		<td>Status: </td>
-		<td><?php
-		$value = $status;
-		build_simple_dropdown("listing_status", $value);
-		?></td>
-  </tr>
-  <tr>
-     <td>Price: </td>
-     <td><p><input type="text" name="property_price" value="<?php echo $price; ?>" size="15" placeholder="Enter price"/></p></td>
-  </tr>
-  <tr>
-    <td>Headline: </td>
-    <td><p><input type="text" name="head_line" value="<?php echo $headline; ?>" size="15" placeholder="Enter Headline"/></p></td>
-  </tr>
-  <tr>
-    <td>Description: </td>
-    <td><p><input type="text" name="description" value="<?php echo $description; ?>" size="15" placeholder="Enter Headline"/></p></td>
-  </tr>
-	<tr>
-		<td>Postal Code: </td>
-		<td><p><input type="text" name="postal_code" value="<?php echo $postalCode; ?>" size="15" placeholder="Enter Postal Code"/></p></td>
-	</tr>
-	<tr>
-		<td>City: </td>
-		<td><?php
-		$value = $city;
-		build_dropdown("listing_city", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Property Options: </td>
-		<td><?php
-		$value = $propertyOptions;
-		build_dropdown("property_option", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Bedroom: </td>
-		<td><?php
-		$value = $bedroom;
-		build_simple_dropdown("listing_bedrooms", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Bathroom: </td>
-		<td><?php
-		$value = $bathroom;
-		build_simple_dropdown("listing_bathrooms", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Property Type: </td>
-		<td><?php
-		$value = $propertyType;
-		build_dropdown("property_types", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Flooring: </td>
-		<td><?php
-		$value = $flooring;
-		build_dropdown("property_flooring", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Parking: </td>
-		<td><?php
-		$value = $parking;
-		build_dropdown("property_parking", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Building Type: </td>
-		<td><?php
-		$value = $buildingType;
-		build_dropdown("property_building_type", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Basement Type: </td>
-		<td><?php
-		$value = $basementType;
-		build_dropdown("property_basement_type", $value);
-		 ?></td>
-	</tr>
-	<tr>
-		<td>Interior Type: </td>
-		<td><?php
-		$value = $interiorType;
-		build_dropdown("property_interior_type", $value);
-		 ?></td>
-	</tr>
-	</table>
-</div>
-	<div class="login-button"><p><input type="submit" value="Create"/></p></div>
-
-</form>
+  <div class="row">
+  	<div class="col-lg">
+  	</div>
+  	<div class="col-lg">
+  	   <form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
+         <div class="form-group">
+           <label>Status: </label>
+           <?php
+         		 $value = $status;
+         	   build_dropdown("listing_status", $value, $title);
+         	 ?>
+         </div>
+         <div class="form-group">
+           <label>Price: </label>
+           <input type="text" name="property_price" value="<?php echo $price; ?>" class="form-control" placeholder="$ 0.00" required/>
+         </div>
+         <div class="form-group">
+           <label>Headline: </label>
+           <input type="text" name="head_line" value="<?php echo $headline; ?>" class="form-control" />
+         </div>
+         <div class="form-group">
+           <label>Description: </label>
+           <textarea name="description" style="height: 10em;" wrap="soft" class="form-control"> <?php echo $description; ?> </textarea>
+         </div>
+         <div class="row">
+           <div class="col-6">
+             <div class="form-group">
+               <label>City: </label>
+               <?php
+             		$value = $city;
+             		build_dropdown("listing_city", $value, $title);
+           		 ?>
+             </div>
+           </div>
+            <div class="col-6">
+              <div class="form-group">
+          	    <label>Postal Code: </label>
+          	    <input type="text" name="postal_code" value="<?php echo $postalCode; ?>" class="form-control" />
+          	  </div>
+            </div>
+         </div>
+         <div class="form-group">
+           <label>Property Options: </label>
+           <?php
+         		$value = $propertyOptions;
+         		build_dropdown("property_option", $value, $title);
+       		 ?>
+         </div>
+           <div class="row">
+             <div class="col-6">
+               <div class="form-group">
+                 <label>Bedroom: </label>
+                 <?php
+               		$value = $bedroom;
+               		build_simple_dropdown("listing_bedrooms", $value, $title);
+               	  ?>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Bathroom: </label>
+                  <?php
+               		$value = $bedroom;
+               		build_simple_dropdown("listing_bathrooms", $value, $title);
+               	  ?>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Property Type: </label>
+              <?php
+               $value = $propertyType;
+               build_dropdown("property_types", $value, $title);
+               ?>
+             </div>
+              <div class="form-group">
+                <label>Parking: </label>
+                <?php
+                 $value = $parking;
+                 build_dropdown("property_parking", $value, $title);
+                 ?>
+               </div>
+              <div class="form-group">
+                <label>Flooring: </label>
+                <?php
+                 $value = $flooring;
+                 build_dropdown("property_flooring", $value, $title);
+                 ?>
+              </div>
+              <div class="form-group">
+                <label>Building Type: </label>
+                <?php
+           		   $value = $buildingType;
+           		   build_dropdown("property_building_type", $value, $title);
+           		   ?>
+              </div>
+              <div class="form-group">
+                <label>Basement Type: </label>
+                <?php
+                  $value = $basementType;
+                  build_dropdown("property_basement_type", $value, $title);
+                ?>
+              </div>
+              <div class="form-group">
+                <label>Interior Type: </label>
+                <?php
+               $value = $interiorType;
+               build_dropdown("property_interior_type", $value, $title);
+                ?>
+              </div>
+              <div class="text-center">
+          	    <label>Want to view you old listing? <a style="color: #fec222;" href="./dashboard.php"><b>Click Here</b></a>.</label><br/>
+          	  	<button type="submit" class="btn btn-primary btn-md">Create</button><br/><br/>
+          		</div>
+       </form>
+  	</div>
+  	<div class="col-lg">
+  	</div>
+  </div>
 
 <?php
 

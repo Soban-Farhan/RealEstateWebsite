@@ -15,6 +15,7 @@ define("PENDING", 'p');
 define("DISABLED", 'd');
 
 define("OPEN", 'o');
+define("HIDDEN", 'h');
 
 //Defining Database Constants
 define("DB_HOST", "127.0.0.1"); //Database host connection required
