@@ -28,10 +28,10 @@ WEBD2201
  	}
 
  	if(!isset($password) || $password == ""){
-
  		$error .= "Please enter the password of the user.<br/>";
+ 	}
 
- 	} elseif($error == "") {
+	if($error === "") {
 
  	$conn = db_Connect();
  	$query = "login_query";

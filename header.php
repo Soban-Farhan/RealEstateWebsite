@@ -29,7 +29,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#index.php"><img src="./picture/logo.jpg" alt="RR"></a>
+        <a class="navbar-brand" href="./index.php"><img src="./picture/logo.jpg" alt="RR"></a>
         <button class="navbar-toggler bg-light" data-toggle="collapse" type="button" data-target="#navbarResponsive">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,6 +69,9 @@
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
                       </li>
                       <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
+                      </li>
+                      <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
                       </li>";
               }
@@ -85,6 +88,9 @@
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
@@ -111,6 +117,9 @@
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
                       </li>
                       <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
+                      </li>
+                      <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
                       </li>";
               }
@@ -130,6 +139,9 @@
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>

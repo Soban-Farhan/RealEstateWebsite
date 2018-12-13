@@ -2,13 +2,16 @@
   $title = "Reset";
   include("./header.php");
 
-
   $login = "";
   $randPassword = "";
   $email = "";
   $error = "";
   $output = "";
   $result = "";
+
+  if (isset($_SESSION['user_id'])) {
+    $login = $_SESSION['user_id'];
+  }
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
