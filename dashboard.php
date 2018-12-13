@@ -37,7 +37,7 @@
 
         $result =  pg_execute($conn, $query, array( $_POST['delete-listing'] ));
 
-        $output = "Your listing was deleted.";
+        $error = "Your listing was deleted.";
       }
     }
 
@@ -61,7 +61,6 @@
 
 <div class="row justify-content-center">
     <h4><?php echo $error;?></h4>
-    <h5><?php echo $output;?></h5>
 </div>
 
 <div class="row">

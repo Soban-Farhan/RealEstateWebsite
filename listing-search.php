@@ -33,6 +33,7 @@
   $maxPrice = trim($_POST["max_price"]);;
   $bedroom = trim($_POST["listing_bedrooms"]);
   $bathroom = trim($_POST["listing_bathrooms"]);
+  $city = trim($_POST["listing_city"]);
 
   if(!isset($minPrice) || $minPrice == ""){
     $error .= "Please enter something for minimum price.<br/>";
@@ -45,6 +46,10 @@
   } elseif (!intval($maxPrice)) {
     $error .= "The maximun price should be an integer.<br/>";
   }
+
+  if (!isset($city) || $city == "") {
+		$error .= "Please select something from the city.<br/>";
+	}
 
   if (!isset($bedroom) || $bedroom == "") {
     $error .= "Please select something from the bedroom.<br/>";
@@ -73,8 +78,10 @@
 
       $_SESSION['listing_array'] = $array;
 
-      header("Location:./listing-search-results.php");
+      setcookie('city', $city, time() + COOKIE_LIFESPAN);
 
+      header("Location:./listing-search-results.php");
+      ob_flush();
     }
   }
 }
@@ -92,10 +99,15 @@
         <div class="form-group">
           <label>Minimum price: </label>
           <input type="text" name="min_price" value="<?php echo $minPrice; ?>" class="form-control" />
-        </div>
-        <div class="form-group">
           <label>Maximum price: </label>
           <input type="text" name="max_price" value="<?php echo $maxPrice; ?>" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label>City: </label>
+          <?php
+           $value = $city;
+           build_dropdown("listing_city", $value, $title);
+          ?>
         </div>
         <div class="row">
           <div class="col-6">

@@ -8,34 +8,15 @@ Date Modified: October, 2018
 Description: File created as part of Deliverable 1. This file will display a webpage that serves a purpose in specifying a location to provide available houses. ONLY the Agent has access to this
 */
 
-	$title = "Listing Search Page";
-	$file = "privacy-policy.php";
-	$description = "Webpage that lets the agent to specify a location for searching available houses";
-	$date = " November 11, 2018";
-	$banner = "Privacy Policy";
+	$title = "Policy";
 	include("./header.php");
-	require("./includes/db.php");
 
 
 ?>
-
-<a href = "./index.php"> Return to previous page </a>
-
-<h1>Privacy Policy</h1>
-
-
-<p>Effective date: November 30, 2018</p>
-
-
-<p>Royal Realtors ("us", "we", or "our") operates the http://opentech2.durhamcollege.org/pufferd/webd3201/ website (the "Service").</p>
-
-<p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy  for Royal Realtors is managed through <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php">Free Privacy Policy Website</a>.</p>
-
-<p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from http://opentech2.durhamcollege.org/pufferd/webd3201/</p>
-
-
-<br/>
-
+<div class="row">
+<div class="col-sm">
+</div>
+<div class="col-lg">
 <h2>Information Collection And Use</h2>
 
 <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
@@ -46,7 +27,7 @@ Description: File created as part of Deliverable 1. This file will display a web
 
 <h4>Personal Data</h4>
 
-<p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</p>
+<p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact. Personally identifiable information may include, but is not limited to:</p>
 
 <ul>
 <li>Email address</li><li>First name and last name</li><li>Phone number</li><li>Address, State, Province, ZIP/Postal code, City</li><li>Cookies and Usage Data</li>
@@ -56,7 +37,7 @@ Description: File created as part of Deliverable 1. This file will display a web
 
 <h4>Usage Data</h4>
 
-<p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information how the Service is accessed. This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
 <br/>
 
 <h4>Tracking & Cookies Data</h4>
@@ -73,8 +54,8 @@ Description: File created as part of Deliverable 1. This file will display a web
 <br/>
 
 <h2>Use of Data</h2>
-    
-<p>Royal Realtors uses the collected data for various purposes:</p>    
+
+<p>Royal Realtors uses the collected data for various purposes:</p>
 <ul>
     <li>To provide and maintain the Service</li>
     <li>To notify you about changes to our Service</li>
@@ -113,7 +94,7 @@ Description: File created as part of Deliverable 1. This file will display a web
 <br/>
 
 <h2>Service Providers</h2>
-<p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+<p>We may employ third party companies and individuals to facilitate our Service (BlueHost), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
 <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
 
 <br/>
@@ -135,8 +116,11 @@ Description: File created as part of Deliverable 1. This file will display a web
 <p>If you have any questions about this Privacy Policy, please contact us:</p>
 <ul>
         <li>By email: rrsupport@royalrealtors.com</li>
-          
+
         <li>By phone number: 746.666.3333</li>
         </ul>
-
+</div>
+<div class="col-sm">
+</div>
+</div>
 <?php include("./footer.php"); ?>
