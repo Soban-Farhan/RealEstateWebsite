@@ -8,14 +8,10 @@
 		header("Location:./login.php");
 		ob_flush();
 	}
-	elseif ($_SESSION['user_type'] == CLIENT )
+	elseif ($_SESSION['user_type'] != AGENT )
 	{
-		header("Location:./logout.php");
+		header("Location:./welcome.php");
 		ob_flush();
-	}
-	else
-	{
-		$_SESSION['error_message'] = "";
 	}
 
 	$table = "";
@@ -40,7 +36,6 @@
 	$interiorType = "";
 
   $login = $_SESSION['user_id'];
-  $user_type = $_SESSION['user_type'];
 
 	$output = "";
 	$error = "";

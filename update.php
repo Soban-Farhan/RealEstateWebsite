@@ -2,16 +2,10 @@
   $title = "Update";
   include("./header.php");
 
-  if (!isset($_SESSION['user_type'])) {
-
-		$_SESSION['error_message'] = "Can't access that page until you login.";
-
+  if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == "") {
 		header("Location:./login.php");
 		ob_flush();
-	} else {
-		$_SESSION['error_message'] = "";
 	}
-
 
   $login = $_SESSION['user_id'];
   $email = $_SESSION['email_address'];

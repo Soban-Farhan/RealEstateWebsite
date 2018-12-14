@@ -6,14 +6,11 @@
 	{
 		header("Location:./login.php");
 		ob_flush();
-
 	} else {
-
-			unset($_SESSION);
-			session_destroy();
-			ob_flush();
-
-			header("Refresh:5; url=./login.php", true, 303);
+		unset($_SESSION);
+		session_destroy();
+		header("Refresh:5; url=./login.php", true, 303);
+    ob_flush();
 	}
 
 ?>

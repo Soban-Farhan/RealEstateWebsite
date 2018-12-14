@@ -30,8 +30,7 @@
 	$sql = "";
 
 	if (isset($_SESSION['user_type'])) {
-
-		header("Location:./dashboard.php");
+		header("Location:./welcome.php");
 		ob_flush();
 	}
 

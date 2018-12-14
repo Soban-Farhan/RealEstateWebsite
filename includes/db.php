@@ -52,10 +52,37 @@
           </div>";
  }
 
+ function disabled_agent($value)
+ {
+   $conn = db_Connect();
+
+   $sql = "SELECT * FROM users WHERE user_id = '$value' ";
+   $result = pg_query($conn, $sql);
+
+   $row = pg_fetch_assoc($result);
+
+   echo "<div class=\"col-4 pt-2 pb-3\">
+         <div class=\"card\">
+                 <div class=\"card-body\">
+                   <p class=\"card-text\" style=\"color: #fec222; \"><b>Name: ". $row['user_id'] ."</b></p>
+                   <p class=\"card-text\">Email: ". $row['email_address'] ."</p>
+                   <p class=\"card-text\">Start date: ". $row['enrol_date'] ."</p>
+                   <form action=". $_SERVER['PHP_SELF'] ." method=\"post\">
+                    <div class=\"row\">
+                    <div class=\"col-lg\">
+                    <button type=\"submit\" name=\"re-enable-agent\" value=". $row['user_id'] ." class=\"btn btn-primary btn-md\" > Re - Enable </button>
+                    </div>
+                    <div class=\"col-lg\">
+                    </div>
+                    </div>
+                    </form>
+                 </div>
+            </div>
+          </div>";
+ }
+
  function pending_agent($value)
  {
-   $userID = "";
-
    $conn = db_Connect();
 
    $sql = "SELECT * FROM persons WHERE user_id = '$value' ";
@@ -70,9 +97,8 @@
                    <p class=\"card-text\">Phone: ". $row['primary_phone_number'] ."</p>
                    <form action=". $_SERVER['PHP_SELF'] ." method=\"post\">
                     <div class=\"row\">
-                    <div class=\"col-lg\">";
-
-                echo "<button type=\"submit\" name=\"accept-agent\" value=". $row['user_id'] ." class=\"btn btn-primary btn-md\" > Accept </button>
+                    <div class=\"col-lg\">
+                    <button type=\"submit\" name=\"accept-agent\" value=". $row['user_id'] ." class=\"btn btn-primary btn-md\" > Accept </button>
                     </div>
                     <div class=\"col-lg\">
                        <button type=\"submit\" name=\"decline-agent\" value=". $row['user_id'] ." class=\"btn btn-primary btn-md\" > Decline </button>
@@ -141,6 +167,9 @@
                            } elseif($title === "Dashboard") {
                               echo "<div class=\"col-lg\">
                                       <button type=\"submit\" name=\"delete-listing\" value=". $row['listing_id'] ." class=\"btn btn-primary btn-md\"> Delete Listing </button>
+                                    </div>
+                                    <div class=\"col-lg\">
+                                        <button class=\"btn btn-primary btn-md\"> <a class=\"text-light\" href=\"./listing-update.php?listing_id=". $row['listing_id'] ."\"> Update Listing </a> </button>
                                     </div>";
                            } else {
                              echo "<div class=\"col-lg\">

@@ -5,11 +5,12 @@ WEBD2201
 13 April, 2018
 */
 	$title = "Login";
-	$file = "login.php";
-	$description = "Login page our real estate website";
-	$date = "Oct 4, 2018";
-	$banner = "Login";
 	include("./header.php");
+
+	if (isset($_SESSION['user_type'])) {
+		header("./welcome.php");
+    ob_flush();
+	}
 
 	$login = "";
 	$password = "";

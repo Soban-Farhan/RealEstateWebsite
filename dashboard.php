@@ -16,7 +16,7 @@
 	}
 	elseif ($_SESSION['user_type'] == CLIENT )
 	{
-		header("Location:./logout.php");
+		header("Location:./welcome.php");
 		ob_flush();
 	}
 
@@ -68,7 +68,6 @@
   <?php
 if (!empty($array)) {
   	for ($index = 0; $index < sizeof($array); $index++) {
-
   			build_listing($array[$index]['listing_id'], $title);
   	}
 }

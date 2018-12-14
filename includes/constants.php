@@ -12,7 +12,7 @@ define("ADMIN", 's');
 define("AGENT", 'a');
 define("CLIENT", 'c');
 define("PENDING", 'p');
-define("DISABLED", 'd');
+define("DISABLED_AGENT", 'da');
 
 define("OPEN", 'o');
 define("HIDDEN", 'h');

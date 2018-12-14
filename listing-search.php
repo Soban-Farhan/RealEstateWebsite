@@ -70,6 +70,10 @@
 
     if (pg_num_rows($result) === 0) {
       $error = "No listing found. Please try again.<br/>";
+    } elseif(pg_num_rows($result) === 1) {
+      $row = pg_fetch_assoc($result);
+      header("Location:./listing-display.php?listing_id=". $row['listing_id'] ."");
+      ob_flush();
     } else {
 
       while ($row = pg_fetch_assoc($result)) {
@@ -97,10 +101,16 @@
     <div class="col-lg">
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group">
-          <label>Minimum price: </label>
-          <input type="text" name="min_price" value="<?php echo $minPrice; ?>" class="form-control" />
-          <label>Maximum price: </label>
-          <input type="text" name="max_price" value="<?php echo $maxPrice; ?>" class="form-control" />
+          <div class="row">
+            <div class="col-6">
+              <label>Minimum price: </label>
+              <input type="text" name="min_price" value="<?php echo $minPrice; ?>" class="form-control" placeholder="$ 0.00"/>
+            </div>
+            <div class="col-6">
+              <label>Maximum price: </label>
+              <input type="text" name="max_price" value="<?php echo $maxPrice; ?>" class="form-control" placeholder="$ 0.00"/>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>City: </label>

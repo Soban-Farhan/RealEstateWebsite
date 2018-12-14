@@ -18,7 +18,7 @@
 	}
 	elseif ($_SESSION['user_type'] != ADMIN )
 	{
-		header("Location:./logout.php");
+		header("Location:./welcome.php");
 		ob_flush();
 	}
 
@@ -93,6 +93,7 @@
   <ul class="nav nav-pills-light">
     <li class="nav-item active"><a data-toggle="pill" style="border: none;" class="nav-link" href="#reportListing"><button type="button" class="btn btn-primary btn-sl"> Repoted Listing </button></a></li>
     <li class="nav-item"><a data-toggle="pill" class="nav-link" href="#pendingAgent"><button type="button" class="btn btn-primary btn-sl"> Pending Agent </button></a></li>
+    <li class="nav-item"><a class="nav-link" href="./disabled-users.php"><button type="button" class="btn btn-primary btn-sl"> Disabled Agent </button></a></li>
   </ul>
 
   <div class="tab-content">
