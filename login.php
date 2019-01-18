@@ -79,7 +79,7 @@ WEBD2201
  				header("Location:./welcome.php");
  				ob_flush();
  			}
-			if ($_SESSION['user_type'] == PENDING)
+			elseif ($_SESSION['user_type'] == PENDING)
  			{
  				header("Location:./welcome.php");
  				ob_flush();
@@ -92,6 +92,11 @@ WEBD2201
  			elseif ($_SESSION['user_type'] == ADMIN)
  			{
  				header("Location:./admin.php");
+ 				ob_flush();
+ 			}
+			elseif ($_SESSION['user_type'] == DISABLED || $_SESSION['user_type'] == DISABLED_AGENT )
+ 			{
+ 				header("Location:./aup.php");
  				ob_flush();
  			}
 
