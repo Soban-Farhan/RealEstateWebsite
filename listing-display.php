@@ -6,9 +6,8 @@
 	$output = "";
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		
+
 			$listing_id = $_POST['hide-listing-id'];
-			$user_id = $_POST['disable-user-id'];
 
 			$conn = db_Connect();
 		 	$query = "login_query";
@@ -18,20 +17,9 @@
 
 			$output = "Listing status has been changed to hidden";
 
-			$listing_id = $_POST['hide-listing-id'];
-
-			$conn = db_Connect();
-		 	$query = "diable_agent_query";
-		 	$result = db_prepare($conn, $query, 'UPDATE users SET user_type = $1 WHERE user_id = $2');
-
-		 	$result =  pg_execute($conn, $query, array( DISABLED_AGENT, $user_id));
-
-			$output = "Agent has been changed to disabled";
-
 	}
 	elseif (!isset($_GET['listing_id'])) {
 		header("Location:./listing-search.php");
-		ob_flush();
 	} else {
 		$listing_id = $_GET['listing_id'];
 	}
@@ -197,8 +185,7 @@
 		<div class="text-center">
 		<?php if (!isset($_SESSION['user_type'])) { }
 		elseif ( $_SESSION['user_type'] === ADMIN ) {
-			echo "<input type=\"hidden\" name=\"disable-user-id\" value=".$row['user_id']." />
-						<button action=\"submit\" name=\"hide-listing-id\" value=".$row['listing_id']." class=\"btn btn-primary btn-md\">Hide Listing</button><br/><br/>";
+			echo "<button action=\"submit\" name=\"hide-listing-id\" value=".$row['listing_id']." class=\"btn btn-primary btn-md\">Hide Listing</button><br/><br/>";
 		} ?>
 		</div>
 		</form>

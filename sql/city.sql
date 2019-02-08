@@ -5,7 +5,7 @@ value INTEGER PRIMARY KEY,
 property VARCHAR(15) NOT NULL
 );
 
-ALTER TABLE listing_city OWNER TO group25_admin;
+ALTER TABLE listing_city OWNER TO sobanfar;
 
 INSERT INTO listing_city (value, property) VALUES (1, 'Ajax');
 

@@ -4,7 +4,7 @@ CREATE TABLE listing_bedrooms(
 value INTEGER PRIMARY KEY
 );
 
-ALTER TABLE listing_bedrooms OWNER TO group25_admin;
+ALTER TABLE listing_bedrooms OWNER TO sobanfar;
 
 INSERT INTO listing_bedrooms(value) VALUES (1);
 

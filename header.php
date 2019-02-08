@@ -1,3 +1,5 @@
+<?php @ob_start();
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./css/webd3201.css">
-  <link rel="shortcut icon" href="./picture/logo.jpg"/>
   <!--
   	Name: Soban Farhan, Richard Ocampo, Adam Peltenburg, Syed Hasan Raqib
   	File: <?php echo $file . "\n"; ?>
@@ -17,9 +18,6 @@
   	Description: <?php echo $description . "\n"; ?>
   -->
     <?php
-    session_start();
-    ob_start();
-
     require("./includes/functions.php");
     require("./includes/db.php");
     ?>
@@ -29,7 +27,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="./index.php"><img src="./picture/logo.jpg" alt="RR"></a>
+        <a class="navbar-brand" href="#index.php"><img src="./picture/logo.jpg" alt="RR"></a>
         <button class="navbar-toggler bg-light" data-toggle="collapse" type="button" data-target="#navbarResponsive">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,9 +67,6 @@
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
                       </li>
                       <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
-                      </li>
-                      <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
                       </li>";
               }
@@ -88,9 +83,6 @@
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
-                      </li>
-                      <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
@@ -117,9 +109,6 @@
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
                       </li>
                       <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
-                      </li>
-                      <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>
                       </li>";
               }
@@ -139,9 +128,6 @@
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./update.php\"><button class=\"btn btn-outline-light btn-sl\"> Update </button></a>
-                      </li>
-                      <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"./password-update.php\"><button class=\"btn btn-outline-light btn-sl\"> Change Password </button></a>
                       </li>
                       <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"./logout.php\"><button class=\"btn btn-primary btn-sl\"> Log out </button></a>

@@ -5,6 +5,4 @@ CREATE TABLE favourites(
   listing_id INTEGER NOT NULL REFERENCES listings(listing_id)
 );
 
-ALTER TABLE favourites OWNER TO group25_admin;
-
-SELECT * FROM favourites;
+ALTER TABLE favourites OWNER TO sobanfar;

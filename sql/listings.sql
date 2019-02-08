@@ -26,7 +26,7 @@ CREATE TABLE listings (
  interior_type INTEGER NOT NULL
 );
 
-ALTER TABLE listings OWNER TO group25_admin;
+ALTER TABLE listings OWNER TO sobanfar;
 
 INSERT INTO listings (user_id, status, price, headline, description, postal_code, images, city, property_options, bedrooms, bathrooms, property_type, flooring, parking, building_type, basement_type, interior_type) VALUES ('zhunnicot4r', 's', '695234.49', 'Location', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 'Q7L3M4', 0, 64, 4, 1, 5, 4, 2, 8, 1, 8, 28);
 INSERT INTO listings (user_id, status, price, headline, description, postal_code, images, city, property_options, bedrooms, bathrooms, property_type, flooring, parking, building_type, basement_type, interior_type) VALUES ('rkeoghanhq', 's', '868228.37', 'Designer Style With Leafy Parkland Views', 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.

@@ -8,10 +8,14 @@
 		header("Location:./login.php");
 		ob_flush();
 	}
-	elseif ($_SESSION['user_type'] != AGENT )
+	elseif ($_SESSION['user_type'] == CLIENT )
 	{
-		header("Location:./welcome.php");
+		header("Location:./logout.php");
 		ob_flush();
+	}
+	else
+	{
+		$_SESSION['error_message'] = "";
 	}
 
 	$table = "";
@@ -36,6 +40,7 @@
 	$interiorType = "";
 
   $login = $_SESSION['user_id'];
+  $user_type = $_SESSION['user_type'];
 
 	$output = "";
 	$error = "";
@@ -163,7 +168,7 @@ if ($error === "") {
            <label>Status: </label>
            <?php
          		 $value = $status;
-         	   build_dropdown("listing_status", $value, $title);
+         	   build_dropdown("listing_status", $value);
          	 ?>
          </div>
          <div class="form-group">
@@ -184,7 +189,7 @@ if ($error === "") {
                <label>City: </label>
                <?php
              		$value = $city;
-             		build_dropdown("listing_city", $value, $title);
+             		build_dropdown("listing_city", $value);
            		 ?>
              </div>
            </div>
@@ -199,7 +204,7 @@ if ($error === "") {
            <label>Property Options: </label>
            <?php
          		$value = $propertyOptions;
-         		build_dropdown("property_option", $value, $title);
+         		build_dropdown("property_option", $value);
        		 ?>
          </div>
            <div class="row">
@@ -226,42 +231,42 @@ if ($error === "") {
               <label>Property Type: </label>
               <?php
                $value = $propertyType;
-               build_dropdown("property_types", $value, $title);
+               build_dropdown("property_types", $value);
                ?>
              </div>
               <div class="form-group">
                 <label>Parking: </label>
                 <?php
                  $value = $parking;
-                 build_dropdown("property_parking", $value, $title);
+                 build_dropdown("property_parking", $value);
                  ?>
                </div>
               <div class="form-group">
                 <label>Flooring: </label>
                 <?php
                  $value = $flooring;
-                 build_dropdown("property_flooring", $value, $title);
+                 build_dropdown("property_flooring", $value);
                  ?>
               </div>
               <div class="form-group">
                 <label>Building Type: </label>
                 <?php
            		   $value = $buildingType;
-           		   build_dropdown("property_building_type", $value, $title);
+           		   build_dropdown("property_building_type", $value);
            		   ?>
               </div>
               <div class="form-group">
                 <label>Basement Type: </label>
                 <?php
                   $value = $basementType;
-                  build_dropdown("property_basement_type", $value, $title);
+                  build_dropdown("property_basement_type", $value);
                 ?>
               </div>
               <div class="form-group">
                 <label>Interior Type: </label>
                 <?php
                $value = $interiorType;
-               build_dropdown("property_interior_type", $value, $title);
+               build_dropdown("property_interior_type", $value);
                 ?>
               </div>
               <div class="text-center">

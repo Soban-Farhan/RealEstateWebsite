@@ -16,7 +16,7 @@ fax_number VARCHAR(10),
 preferred_contact_method VARCHAR(50) NOT NULL
 );
 
-ALTER TABLE persons OWNER TO group25_admin;
+ALTER TABLE persons OWNER TO sobanfar;
 
 insert into persons (user_id, salutation, first_name, last_name, street_address1, street_address2, city, province, postal_code, primary_phone_number, secondary_phone_number, fax_number, preferred_contact_method) values ('dswynfen0', 'Ms.', 'Durward', 'Swynfen', '09755 Amoth Circle', '815 Tennyson Street', 16, 'AB', null, '(336) 5904165', '2227016658', null, 'e');
 insert into persons (user_id, salutation, first_name, last_name, street_address1, street_address2, city, province, postal_code, primary_phone_number, secondary_phone_number, fax_number, preferred_contact_method) values ('kramble1', null, 'Kendal', 'Ramble', '33 Nova Center', null, 1, 'PE', 'B0R2L4', '(208) 3603101', null, null, 'e');

@@ -8,7 +8,8 @@ CREATE TABLE users(
 	enrol_date DATE NOT NULL,
 	last_access DATE NOT NULL
 );
-ALTER TABLE users OWNER TO group25_admin;
+
+ALTER TABLE users OWNER TO sobanfar;
 
 insert into users (user_id, password, email_address, user_type, enrol_date, last_access) values ('dswynfen0', md5('password'), 'dhatliff0@comsenz.com', 'c', '2015-06-14', current_date);
 insert into users (user_id, password, email_address, user_type, enrol_date, last_access) values ('kramble1', md5('password'), 'creina1@ow.ly', 'c', '2016-02-12', current_date);

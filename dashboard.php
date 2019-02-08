@@ -16,7 +16,7 @@
 	}
 	elseif ($_SESSION['user_type'] == CLIENT )
 	{
-		header("Location:./welcome.php");
+		header("Location:./logout.php");
 		ob_flush();
 	}
 
@@ -37,7 +37,7 @@
 
         $result =  pg_execute($conn, $query, array( $_POST['delete-listing'] ));
 
-        $error = "Your listing was deleted.";
+        $output = "Your listing was deleted.";
       }
     }
 
@@ -61,6 +61,7 @@
 
 <div class="row justify-content-center">
     <h4><?php echo $error;?></h4>
+    <h5><?php echo $output;?></h5>
 </div>
 
 <div class="row">
@@ -68,6 +69,7 @@
   <?php
 if (!empty($array)) {
   	for ($index = 0; $index < sizeof($array); $index++) {
+
   			build_listing($array[$index]['listing_id'], $title);
   	}
 }

@@ -33,7 +33,6 @@
   $maxPrice = trim($_POST["max_price"]);;
   $bedroom = trim($_POST["listing_bedrooms"]);
   $bathroom = trim($_POST["listing_bathrooms"]);
-  $city = trim($_POST["listing_city"]);
 
   if(!isset($minPrice) || $minPrice == ""){
     $error .= "Please enter something for minimum price.<br/>";
@@ -46,10 +45,6 @@
   } elseif (!intval($maxPrice)) {
     $error .= "The maximun price should be an integer.<br/>";
   }
-
-  if (!isset($city) || $city == "") {
-		$error .= "Please select something from the city.<br/>";
-	}
 
   if (!isset($bedroom) || $bedroom == "") {
     $error .= "Please select something from the bedroom.<br/>";
@@ -70,10 +65,6 @@
 
     if (pg_num_rows($result) === 0) {
       $error = "No listing found. Please try again.<br/>";
-    } elseif(pg_num_rows($result) === 1) {
-      $row = pg_fetch_assoc($result);
-      header("Location:./listing-display.php?listing_id=". $row['listing_id'] ."");
-      ob_flush();
     } else {
 
       while ($row = pg_fetch_assoc($result)) {
@@ -82,10 +73,8 @@
 
       $_SESSION['listing_array'] = $array;
 
-      setcookie('city', $city, time() + COOKIE_LIFESPAN);
-
       header("Location:./listing-search-results.php");
-      ob_flush();
+
     }
   }
 }
@@ -101,23 +90,12 @@
     <div class="col-lg">
       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="form-group">
-          <div class="row">
-            <div class="col-6">
-              <label>Minimum price: </label>
-              <input type="text" name="min_price" value="<?php echo $minPrice; ?>" class="form-control" placeholder="$ 0.00"/>
-            </div>
-            <div class="col-6">
-              <label>Maximum price: </label>
-              <input type="text" name="max_price" value="<?php echo $maxPrice; ?>" class="form-control" placeholder="$ 0.00"/>
-            </div>
-          </div>
+          <label>Minimum price: </label>
+          <input type="text" name="min_price" value="<?php echo $minPrice; ?>" class="form-control" />
         </div>
         <div class="form-group">
-          <label>City: </label>
-          <?php
-           $value = $city;
-           build_dropdown("listing_city", $value, $title);
-          ?>
+          <label>Maximum price: </label>
+          <input type="text" name="max_price" value="<?php echo $maxPrice; ?>" class="form-control" />
         </div>
         <div class="row">
           <div class="col-6">

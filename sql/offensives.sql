@@ -7,3 +7,5 @@ CREATE TABLE offensives (
 	status CHAR(1) NOT NULL,
 	PRIMARY KEY( user_id, listing_id )
 );
+
+ALTER TABLE offensives OWNER TO sobanfar;

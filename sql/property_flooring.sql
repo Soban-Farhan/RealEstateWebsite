@@ -5,8 +5,7 @@ value INT PRIMARY KEY,
 property VARCHAR(30) NOT NULL
 );
 
-ALTER TABLE property_flooring OWNER TO group25_admin;
-
+ALTER TABLE property_flooring OWNER TO sobanfar;
 
 INSERT INTO property_flooring (value, property) VALUES (1, 'Carpeted');
 

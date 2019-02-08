@@ -5,7 +5,7 @@ value INT PRIMARY KEY,
 property VARCHAR(30) NOT NULL
 );
 
-ALTER TABLE property_parking OWNER TO group25_admin;
+ALTER TABLE property_parking OWNER TO sobanfar;
 
 INSERT INTO property_parking (value, property) VALUES (1, 'Single car port');
 

@@ -4,7 +4,7 @@ CREATE TABLE salutation(
 	value VARCHAR(10) PRIMARY KEY
 );
 
-ALTER TABLE salutation OWNER TO group25_admin;
+ALTER TABLE salutation OWNER TO sobanfar;
 
 INSERT INTO salutation(value) VALUES ('Master');
 INSERT INTO salutation(value) VALUES ('Mr.');

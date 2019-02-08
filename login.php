@@ -5,12 +5,11 @@ WEBD2201
 13 April, 2018
 */
 	$title = "Login";
+	$file = "login.php";
+	$description = "Login page our real estate website";
+	$date = "Oct 4, 2018";
+	$banner = "Login";
 	include("./header.php");
-
-	if (isset($_SESSION['user_type'])) {
-		header("./welcome.php");
-    ob_flush();
-	}
 
 	$login = "";
 	$password = "";
@@ -29,14 +28,14 @@ WEBD2201
  	}
 
  	if(!isset($password) || $password == ""){
- 		$error .= "Please enter the password of the user.<br/>";
- 	}
 
-	if($error === "") {
+ 		$error .= "Please enter the password of the user.<br/>";
+
+ 	} elseif($error == "") {
 
  	$conn = db_Connect();
  	$query = "login_query";
- 	$result = db_prepare($conn, $query, 'SELECT user_id, user_type, last_access, email_address  FROM users WHERE user_id = $1 AND password = $2');
+ 	$result = db_prepare($conn, $query, 'SELECT user_id, user_type, last_access, email_address FROM users WHERE user_id = $1 AND password = $2');
 
  	$result =  pg_execute($conn, $query, array($login, md5($password)));
 
@@ -76,27 +75,22 @@ WEBD2201
 
  			if ($_SESSION['user_type'] == CLIENT)
  			{
- 				header("Location:./welcome.php");
+ 				header("location:./welcome.php");
  				ob_flush();
  			}
-			elseif ($_SESSION['user_type'] == PENDING)
+			if ($_SESSION['user_type'] == PENDING)
  			{
- 				header("Location:./welcome.php");
+ 				header("location:./welcome.php");
  				ob_flush();
  			}
  			elseif ($_SESSION['user_type'] == AGENT)
  			{
- 				header("Location:./dashboard.php");
- 				obflush();
+ 				header("location:./dashboard.php");
+ 				ob_flush();
  			}
  			elseif ($_SESSION['user_type'] == ADMIN)
  			{
- 				header("Location:./admin.php");
- 				ob_flush();
- 			}
-			elseif ($_SESSION['user_type'] == DISABLED || $_SESSION['user_type'] == DISABLED_AGENT )
- 			{
- 				header("Location:./aup.php");
+ 				header("location:./admin.php");
  				ob_flush();
  			}
 
@@ -120,7 +114,7 @@ WEBD2201
 	<form action="<?php echo $_SERVER['PHP_SELF'];  ?>" method="post">
 	  <div class="form-group">
 	    <label>Login username: </label>
-	    <input type="text" name="id" value="<?php echo $login; ?>" class="form-control" placeholder="Enter email">
+	    <input type="text" name="id" value="<?php echo $login; ?>" class="form-control" placeholder="Enter username">
 	  </div>
 	  <div class="form-group">
 	    <label>Password: </label>

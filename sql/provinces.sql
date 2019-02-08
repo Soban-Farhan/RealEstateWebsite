@@ -4,7 +4,7 @@ CREATE TABLE provinces(
 	value CHAR(2)
 );
 
-ALTER TABLE provinces OWNER TO group25_admin;
+ALTER TABLE provinces OWNER TO sobanfar;
 
 INSERT INTO provinces VALUES ('AB');
 INSERT INTO provinces VALUES ('BC');

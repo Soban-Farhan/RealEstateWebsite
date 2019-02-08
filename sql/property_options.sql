@@ -6,7 +6,7 @@ property VARCHAR(30) NOT NULL
 );
 
 
-ALTER TABLE property_option OWNER TO group25_admin;
+ALTER TABLE property_option OWNER TO sobanfar;
 
 INSERT INTO property_option (value, property) VALUES (1, 'Garage');
 
